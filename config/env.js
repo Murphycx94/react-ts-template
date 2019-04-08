@@ -64,6 +64,7 @@ function getClientEnvironment() {
   // Source maps are resource heavy and can cause out of memory issue for large source files.
   const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
+  const isProd = process.env.NODE_ENV === 'production'
   // Webpack uses `publicPath` to determine where the app is being served from.
   // It requires a trailing slash, or the file assets will get an incorrect path.
   const publicPath = paths.servedPath;
@@ -100,8 +101,6 @@ function getClientEnvironment() {
 
   return { raw, stringified, publicUrl, shouldUseSourceMap, publicPath };
 }
-
-const isProd = process.env.NODE_ENV === 'production'
 
 
 // Get environment variables to inject into our app.
