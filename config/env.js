@@ -60,7 +60,15 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
 // injected into the application via DefinePlugin in Webpack configuration.
 const REACT_APP = /^REACT_APP_/i;
 
-function getClientEnvironment(publicUrl) {
+function getClientEnvironment() {
+  // Source maps are resource heavy and can cause out of memory issue for large source files.
+  const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+
+  // Webpack uses `publicPath` to determine where the app is being served from.
+  // It requires a trailing slash, or the file assets will get an incorrect path.
+  const publicPath = paths.servedPath;
+  const publicUrl = isProd ? publicPath.slice(0, -1) : '';
+
   const raw = Object.keys(process.env)
     .filter(key => REACT_APP.test(key))
     .reduce(
@@ -90,19 +98,13 @@ function getClientEnvironment(publicUrl) {
     ),
   };
 
-  return { raw, stringified, publicUrl };
+  return { raw, stringified, publicUrl, shouldUseSourceMap, publicPath };
 }
 
 const isProd = process.env.NODE_ENV === 'production'
 
-// Webpack uses `publicPath` to determine where the app is being served from.
-// It requires a trailing slash, or the file assets will get an incorrect path.
-const publicPath = paths.servedPath;
-// `publicUrl` is just like `publicPath`, but we will provide it to our app
-// as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
-// Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
-const publicUrl = isProd ? publicPath.slice(0, -1) : '';
+
 // Get environment variables to inject into our app.
-const env = getClientEnvironment(publicUrl);
+const env = getClientEnvironment();
 
 module.exports = env;
