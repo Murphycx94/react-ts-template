@@ -5,6 +5,7 @@ const postcssViewportUnits = require('postcss-viewport-units');
 const cssnano = require('cssnano');
 
 module.exports = {
+  ident: 'postcss',
   plugins: [
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({
