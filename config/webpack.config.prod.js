@@ -53,9 +53,7 @@ const config = merge(baseConfig, {
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
-      path
-        .relative(paths.appSrc, info.absoluteResourcePath)
-        .replace(/\\/g, '/'),
+      path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
