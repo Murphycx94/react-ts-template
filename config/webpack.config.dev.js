@@ -147,7 +147,6 @@ module.exports = {
               compact: true,
             },
           },
-
           // Compile .tsx?
           {
             test: /\.(ts|tsx)$/,
