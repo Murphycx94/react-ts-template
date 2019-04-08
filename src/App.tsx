@@ -1,12 +1,15 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
+
+import RouteRoot from './views/root';
 
 import logo from './logo.svg';
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
+      <Router>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
@@ -14,7 +17,8 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-      </div>
+        <Route path="/" component={RouteRoot} exact={true}/>
+      </Router>
     );
   }
 }
