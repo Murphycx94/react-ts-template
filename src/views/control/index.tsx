@@ -1,11 +1,56 @@
 import * as React from 'react';
+import { COMPILE_DATE } from '../../config';
 import './index.less';
 
-class Index extends React.Component {
+interface InfoItem {
+  label: string,
+  value: string
+};
+
+interface PageState {
+  infoList: InfoItem[];
+}
+
+class Index extends React.Component<{}, PageState> {
+
+  public constructor (props: any) {
+    super(props);
+    this.state = {
+      infoList: []
+    }
+  }
+
+  public componentDidMount () {
+    this.setState(({ infoList }) => {
+      infoList.push({ label: '编译日期', value: COMPILE_DATE });
+      return {
+        infoList
+      }
+    });
+  }
+
   public render() {
+
+    const { infoList } = this.state;
+
     return (
       <div className="control">
-        控制台
+        <h2 className="control-header">控制台</h2>
+        <ul className="control-infos">
+          {
+            infoList.length &&
+            infoList.map(item => (
+              <li className="info-item" key={item.label}>
+                <p className="info-item_label">
+                  { item.label }
+                </p>
+                <p className="info-item_value">
+                  {COMPILE_DATE}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     );
   }
