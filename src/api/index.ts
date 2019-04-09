@@ -3,7 +3,7 @@
  * @Description: Http类 
  * @Date: 2019-04-09 11:44:08 
  * @Last Modified by: Murphy Chu
- * @Last Modified time: 2019-04-09 14:39:10
+ * @Last Modified time: 2019-04-09 14:49:06
  */
 import Axios from 'axios';
 import { BASE_URL } from '../config';
@@ -29,9 +29,7 @@ interface IRequestParams {
 }
 
 class Http {
-;
-;
-
+  
   protected baseURL: string;
 
   protected axios: any;
