@@ -6,4 +6,4 @@ export const TEST: any = process.env.TEST;
 
 export const DEV: boolean = ENV === 'development';
 
-export const BASE_API: string = TEST ? "http://dev.muggle-inc.com/" : "http://club.muggle-inc.com";
+export const BASE_URL: string = TEST ? "http://dev.muggle-inc.com/api/" : "http://club.muggle-inc.com/api/";

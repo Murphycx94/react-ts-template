@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { COMPILE_DATE } from '../../config';
+import { BASE_URL, COMPILE_DATE } from '../../config';
+import http from '../../api';
 import './index.less';
 
 interface InfoItem {
@@ -16,11 +17,17 @@ class Index extends React.Component<{}, PageState> {
   public constructor (props: any) {
     super(props);
     this.state = {
-      infoList: []
+      infoList: [
+        { label: '当前API', value: BASE_URL }
+      ]
     }
   }
 
   public componentDidMount () {
+    http.get('jrzj/momentList', { limit: 20, type: 'createTime', LastId: 0 })
+      .then((res:any) => {
+        console.log(res)
+      });
     this.setState(({ infoList }) => {
       infoList.push({ label: '编译日期', value: COMPILE_DATE });
       return {
@@ -42,10 +49,10 @@ class Index extends React.Component<{}, PageState> {
             infoList.map(item => (
               <li className="info-item" key={item.label}>
                 <p className="info-item_label">
-                  { item.label }
+                  {item.label}
                 </p>
                 <p className="info-item_value">
-                  {COMPILE_DATE}
+                  {item.value}
                 </p>
               </li>
             ))
