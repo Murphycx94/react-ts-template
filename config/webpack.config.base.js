@@ -3,7 +3,7 @@
  * @Description: webpack基础配置 
  * @Date: 2019-04-08 17:41:49 
  * @Last Modified by: Murphy Chu
- * @Last Modified time: 2019-04-08 19:59:30
+ * @Last Modified time: 2019-04-09 10:55:48
  */
 
 const webpack = require('webpack');
@@ -38,7 +38,7 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 
 
 const prodCssLoader = {
-  test: /\.css$/,
+  test: /\.(css|less)$/,
   loader: ExtractTextPlugin.extract(
     Object.assign(
       {
@@ -57,6 +57,7 @@ const prodCssLoader = {
               sourceMap: shouldUseSourceMap,
             },
           },
+          { loader: require.resolve('less-loader') },
           {
             loader: require.resolve('postcss-loader'),
             options: postcssConfig,
@@ -69,7 +70,7 @@ const prodCssLoader = {
   // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
 }
 const devCssloader = {
-  test: /\.css$/,
+  test: /\.(css|less)$/,
   use: [
     require.resolve('style-loader'),
     {
@@ -78,6 +79,7 @@ const devCssloader = {
         importLoaders: 1,
       },
     },
+    { loader: require.resolve('less-loader') },
     {
       loader: require.resolve('postcss-loader'),
       options: postcssConfig,

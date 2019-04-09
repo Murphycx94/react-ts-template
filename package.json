@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "start:test": "TEST=1 node scripts/start.js",
     "build": "node scripts/build.js",
+    "build:test": "TEST=1 node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
@@ -35,6 +37,8 @@
     "html-webpack-plugin": "^4.0.0-beta.5",
     "interpolate-html-plugin": "^3.0.0",
     "jest": "^20.0.4",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "object-assign": "^4.1.1",
     "postcss-aspect-ratio-mini": "^1.0.1",
     "postcss-flexbugs-fixes": "^3.2.0",
