@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button } from 'antd-mobile';
 
 import './index.less';
 
@@ -29,7 +28,6 @@ class Index extends React.Component<{}, PageState> {
           </section>
         </header>
         <div className="overview-swiper">
-          <Button>按钮</Button>
           {/* <Carousel frameOverflow="visible">
             {
               this.state.infoList.map(item => (
@@ -46,3 +44,11 @@ class Index extends React.Component<{}, PageState> {
 }
 
 export default Index;
+
+// ,
+// "plugins": [
+//   [
+//     "import",
+//     { "libraryName": "antd-mobile", "style": "css" }
+//   ]
+// ]
