@@ -14,7 +14,7 @@ interface PageState {
 
 class Index extends React.Component<{}, PageState> {
 
-  public constructor (props: any) {
+  constructor (props: any) {
     super(props);
     this.state = {
       infoList: [
@@ -25,7 +25,7 @@ class Index extends React.Component<{}, PageState> {
 
   public componentDidMount () {
     http.get('jrzj/momentList', { limit: 20, type: 'createTime', LastId: 0 })
-      .then((res:any) => {
+      .then((res: any) => {
         console.log(res)
       });
     this.setState(({ infoList }) => {

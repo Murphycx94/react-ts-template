@@ -1,0 +1,37 @@
+@import '../../less/mixin.less';
+
+.overview {
+  padding-top: 30px;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    &_title {
+      .title-name {
+        font-size: 52px;
+        line-height: 72px;
+      }
+      .title-greetings {
+        margin-top: 10px;
+        font-size: 28px;
+        color: @color-lighter;
+        line-height: 40px;
+      }
+    }
+    &_controls {
+      font-size: 24px;
+      .controls-download {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 134px;
+        height: 60px;
+        border: 2px solid @color-orange;
+        border-radius: 200px;
+        color: @color-orange;
+        font-weight: @font-weight;
+      }
+    }
+  }
+}

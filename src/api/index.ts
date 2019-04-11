@@ -3,7 +3,7 @@
  * @Description: Http类 
  * @Date: 2019-04-09 11:44:08 
  * @Last Modified by: Murphy Chu
- * @Last Modified time: 2019-04-09 14:49:06
+ * @Last Modified time: 2019-04-09 16:43:38
  */
 import Axios from 'axios';
 import { BASE_URL } from '../config';
